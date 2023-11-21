@@ -317,13 +317,14 @@ class Vulture(ast.NodeVisitor):
             return (item.size,) + by_name(item)
 
         unused_code = (
-            self.unused_attrs
-            + self.unused_classes
+            # self.unused_attrs  # mostly false positives
+            # +
+            self.unused_classes
             + self.unused_funcs
             + self.unused_imports
             + self.unused_methods
             + self.unused_props
-            + self.unused_vars
+            # + self.unused_vars    # mostly false positives
             + self.unreachable_code
         )
 
